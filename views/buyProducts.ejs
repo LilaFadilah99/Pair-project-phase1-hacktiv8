@@ -1,8 +1,8 @@
-<%- include('partials/header') %>
+<%- include('partials/header', {isLogin}) %>
 <div class="container my-5">
   <div class="container-fluid">
     <div class="row">
-      <% for (const key of product) {%>
+      <% for (const key of category) {%>
       <div class="col-2">
         <img src="<%= key.image %>" width="80px" height="80px" alt="" />
       </div>
@@ -10,12 +10,16 @@
         <p><%= key.name %></p>
       </div>
       <div class="col-3">
-        <p><%= category %></p>
+        <p><%= key.Category.name %></p>
       </div>
       <div class="col-3">
         <p><%= formatPriceToEjs(key.price) %></p>
       </div>
     </div>
+    <% for (const data of account) {%>
+    <p>Barang akan dikirim menuju alamat anda di <%= data.addres %></p>
+    <p>Dengan penerima atas nama <%= data.name %></p>
+    <% } %>
     <br />
     <a href="/products/<%= key.id %>/thank"><button type="button" class="btn btn-info">Checkout</button></a>
   </div>

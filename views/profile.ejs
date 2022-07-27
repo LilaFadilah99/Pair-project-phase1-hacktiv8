@@ -1,0 +1,22 @@
+<%- include('partials/header', {isLogin}) %>
+<div class="container my-5">
+  <div class="container-fluid">
+    <h1 class="text-center">Lengkapi Profil Anda</h1>
+    <% if (user.Account === null) {%>
+    <a class="btn btn-primary" href="/profile/<%= user.id %>/add" role="button">Add Profile</a>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?w=740&t=st=1658928222~exp=1658928822~hmac=faf4176e667aaa9b9325a69fbac4a85067e348af46b2358c9de3e3de04b3886e" alt="" class="img-fluid" />
+      </div>
+    </div>
+    <% }else {%>
+    <p>Name : <%= user.Account.name %></p>
+    <p>Gender : <%= user.Account.gender %></p>
+    <p>Address : <%= user.Account.addres %></p>
+    <br /><br />
+    <a class="btn btn-primary" href="/profile/<%= user.id %>/edit" role="button">Edit Profile</a>
+    <% } %>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

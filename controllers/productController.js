@@ -12,7 +12,7 @@ class ProductController {
       .then((res) => {
         let category = res[0];
         category = category.Category.name;
-        response.render("detailProduct", { products: res, category });
+        response.render("detailProduct", { products: res, category, isLogin: request.session.userId ? true : false });
         // response.send(res);
       })
       .catch((err) => {
@@ -22,16 +22,23 @@ class ProductController {
 
   static buyProducts(request, response) {
     let id = request.params.id;
-    Product.findAll({
-      include: [Category],
-      where: { id },
-    })
+    Promise.all([
+      Product.findAll({
+        include: [Category],
+        where: { id },
+      }),
+      Account.findAll({
+        where: { id: request.session.userId },
+      }),
+    ])
       .then((res) => {
         let category = res[0];
-        category = category.Category.name;
-        response.render("buyProducts", { product: res, category });
+        let account = res[1];
+        response.render("buyProducts", { account, category, isLogin: request.session.userId ? true : false });
+        // response.send(category);
       })
       .catch((err) => {
+        console.log(err);
         response.send(err);
       });
   }
@@ -39,7 +46,7 @@ class ProductController {
   static addProducts(request, response) {
     Category.findAll({})
       .then((res) => {
-        response.render("addProducts", { categories: res });
+        response.render("addProducts", { categories: res, isLogin: request.session.userId ? true : false });
       })
       .catch((err) => {
         response.send(err);
@@ -61,8 +68,9 @@ class ProductController {
       })
       .catch((err) => {
         if (err.name === "SequelizeValidationError") {
-          response.render("errors", { errors: err.errors });
+          response.render("errors", { errors: err.errors, isLogin: request.session.userId ? true : false });
         } else {
+          console.log(err);
           response.send(err);
         }
       });
@@ -77,7 +85,7 @@ class ProductController {
       .then((res) => {
         let category = res[0];
         category = category.Category.name;
-        response.render("productCategory", { products: res, category });
+        response.render("productCategory", { products: res, category, isLogin: request.session.userId ? true : false });
       })
       .catch((err) => {
         response.send(err);
@@ -91,7 +99,7 @@ class ProductController {
       where: { id },
     })
       .then((res) => {
-        response.render("thankYouPage");
+        response.render("thankYouPage", { isLogin: request.session.userId ? true : false });
       })
       .catch((err) => {
         response.send(err);
@@ -107,7 +115,7 @@ class ProductController {
       },
     })
       .then((res) => {
-        response.render("emptyListProduct", { products: res });
+        response.render("emptyListProduct", { products: res, isLogin: request.session.userId ? true : false });
       })
       .catch((err) => {
         response.send(err);
@@ -120,7 +128,7 @@ class ProductController {
       where: { id },
     })
       .then((res) => {
-        response.render("restockProduct", { products: res });
+        response.render("restockProduct", { products: res, isLogin: request.session.userId ? true : false });
       })
       .catch((err) => {
         response.send(err);
