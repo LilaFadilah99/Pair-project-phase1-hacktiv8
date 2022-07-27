@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+<div class="container my-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4">
+        <% for (key of products) {%>
+        <img src="<%= key.image %>" alt="" class="img-fluid" />
+      </div>
+      <div class="col-10">
+        <h1><%= key.name %></h1>
+        <p><%= formatPriceToEjs(key.price) %></p>
+        <p>Stock: <%= key.stock %></p>
+        <a href="/products/<%= key.id %>/buy"><button type="button" class="btn btn-info">Buy</button></a>
+      </div>
+      <% } %>
+    </div>
+    <br /><br />
+    <div class="row">
+      <div class="col-10">
+        <p class="fw-bold">Deskripsi Product</p>
+        <p class="fw-bold">Category: <%= category %></p>
+        <p><%= key.description %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>

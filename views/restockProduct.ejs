@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+<div class="container my-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <% for (const key of products) {%>
+        <!-- form -->
+        <form action="/products/<%= key.id %>/restock" method="post">
+          <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="stock" name="stock" />
+          </div>
+          <input class="btn btn-primary" type="submit" value="Submit" />
+        </form>
+        <!-- end form -->
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>

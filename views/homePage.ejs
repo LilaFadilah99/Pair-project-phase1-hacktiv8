@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<div class="container">
+  <div class="container-fluid">
+    <% for (const data of categories) {%>
+    <a class="btn btn-info" href="/products/<%= data.id %>/category" role="button"><%= data.name %></a>
+    <% } %>
+  </div>
+</div>
+<div class="container my-5">
+  <div class="container-fluid">
+    <!-- Search -->
+    <form class="d-flex" role="search" action="/" method="get">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name" />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <!-- End Search -->
+    <br /><br />
+    <br /><br />
+    <!-- Card -->
+    <div class="row">
+      <% for (const key of products) {%>
+      <div class="col">
+        <div class="card" style="width: 18rem">
+          <img src="<%= key.image %>" class="card-img-top" width="100px" height="150px" alt="..." />
+          <div class="card-body">
+            <p class="card-text fw-bold"><%= key.name %></p>
+            <div class="row">
+              <p class="card-text"><%= formatPriceToEjs(key.price) %></p>
+              <p class="card-text">Stock : <%= key.stock %></p>
+              <a href="/products/<%= key.id %>/detail">Show detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <!-- End Card -->
+  </div>
+</div>
+<%- include('partials/footer') %>
