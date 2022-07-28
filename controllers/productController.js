@@ -62,6 +62,7 @@ class ProductController {
       price,
       stock,
       CategoryId,
+      UserId: request.session.userId,
     })
       .then((res) => {
         response.redirect("/");
