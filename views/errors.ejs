@@ -1,9 +1,9 @@
 <%- include('partials/header', {isLogin, isAdmin}) %>
 <div class="container">
   <div class="container-fluid">
-    <% for (const key of errors) {%>
+    <% errors.forEach((key)=>{ %>
     <p><%= key.message %></p>
-    <% } %>
+    <% }) %>
   </div>
 </div>
 <%- include('partials/footer') %>
