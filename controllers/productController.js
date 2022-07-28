@@ -4,7 +4,7 @@ const { Op, where } = require("sequelize");
 class ProductController {
   static detailProduct(request, response) {
     let id = request.params.id;
-    console.log(id);
+    // console.log(id);
     Product.findAll({
       include: [Category],
       where: { id },
@@ -22,20 +22,22 @@ class ProductController {
 
   static buyProducts(request, response) {
     let id = request.params.id;
+    // console.log(request.session.userId);
+    let UserId = request.session.userId
     Promise.all([
       Product.findAll({
         include: [Category],
         where: { id },
       }),
       Account.findAll({
-        where: { id: request.session.userId },
+        where: {UserId}, // ganti dibagian sini
       }),
     ])
       .then((res) => {
         let category = res[0];
         let account = res[1];
         response.render("buyProducts", { account, category, isLogin: request.session.userId ? true : false });
-        // response.send(category);
+        // response.send(res);
       })
       .catch((err) => {
         console.log(err);

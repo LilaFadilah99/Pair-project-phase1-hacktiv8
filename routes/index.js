@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const productRouter = require("./productRouter");
-const HomeController = require("../controllers/homeController");
 const profileRouter = require("./profileRouter");
+const HomeController = require("../controllers/homeController");
 
 router.get("/register", HomeController.registerForm);
 router.post("/register", HomeController.submitRegister);
@@ -11,7 +11,7 @@ router.get("/", HomeController.homePage);
 router.use("/products", productRouter);
 
 router.use((req, res, next) => {
-  console.log(req.session.userId);
+  // console.log(req.session.userId);
   if (!req.session.userId) {
     const error = "please login first!";
     res.redirect(`/login?error=${error}`);

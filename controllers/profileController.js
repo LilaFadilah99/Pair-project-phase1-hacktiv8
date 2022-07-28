@@ -47,13 +47,16 @@ class UserController {
 
   static editProfile(request, response) {
     let id = request.params.id;
-    Account.findAll({ where: { id } })
+    // console.log(request.session.UserId);
+    Account.findAll({ where: { UserId : id } }) // ada bug disini dimana seharusnya yang benar itu UserId : id
       .then((res) => {
+        // console.log(res);
         let account = res[0];
         response.render("editProfile", { account, isLogin: request.session.userId ? true : false });
       })
       .catch((err) => {
         response.send(err);
+        console.log(err);
       });
   }
 
