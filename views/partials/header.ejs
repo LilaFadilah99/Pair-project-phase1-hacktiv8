@@ -19,18 +19,21 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
-            <% if (isLogin === true) {%>
+            <% if (isAdmin === true) {%>
             <li class="nav-item">
               <a class="nav-link" href="/products/add">Add Products</a>
             </li>
-            <% } %>
             <li class="nav-item">
-              <a class="nav-link" href="/profile">Profile</a>
+              <a class="nav-link" href="/products/emptyList">Empty List Products</a>
             </li>
+            <% } %>
             <% if (isLogin === false) {%>
             <a href="/register"><button type="button" class="btn btn-info">Register</button></a>
             <a href="/login"><button type="button" class="btn btn-info">Login</button></a>
-            <% } else { %>
+            <% } else if(isLogin === true) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile</a>
+              </li>
             <a href="/logout"><button type="button" class="btn btn-info">Logout</button></a>
             <% } %>
           </ul>
