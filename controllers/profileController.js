@@ -14,7 +14,7 @@ class UserController {
         response.render("profile", { user, isLogin: request.session.userId && request.session.role === "admin" ? true : false });
         // response.send(res[0]);
       })
-      .then((err) => {
+      .catch((err) => {
         response.send(err);
       });
   }
@@ -28,7 +28,7 @@ class UserController {
         let user = res[0];
         response.render("addProfile", { user, isLogin: request.session.userId ? true : false });
       })
-      .then((err) => {
+      .catch((err) => {
         response.send(err);
       });
   }
@@ -40,7 +40,7 @@ class UserController {
       .then((res) => {
         response.redirect("/profile");
       })
-      .then((err) => {
+      .catch((err) => {
         response.send(err);
       });
   }
@@ -66,6 +66,7 @@ class UserController {
       })
       .catch((err) => {
         response.send(err);
+        console.log(err);
       });
   }
 }

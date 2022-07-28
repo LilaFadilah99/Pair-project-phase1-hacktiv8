@@ -1,5 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
+const { Op, where } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     /**
@@ -11,6 +13,21 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Product.belongsTo(models.Category, { foreignKey: "CategoryId" });
       Product.belongsTo(models.User, { foreignKey: "UserId" });
+    }
+    static scopeNotEmptyProducts(name) {
+      let opt = {
+        where: {
+          stock: {
+            [Op.gt]: 0,
+          },
+        },
+      };
+      if (name) {
+        opt.where.name = {
+          [Op.iLike]: `%${name}%`,
+        };
+      }
+      return Product.findAll(opt);
     }
   }
   Product.init(
