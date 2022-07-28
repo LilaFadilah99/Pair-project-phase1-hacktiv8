@@ -10,8 +10,7 @@ class HomeController {
       .then((res) => {
         let products = res[0];
         let categories = res[1];
-        // response.render("homePage", { products, categories, isLogin: request.session.userId ? true : false });
-        response.render("homePage", { products, categories, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
+        response.render("tes", { products, categories, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
       })
       .catch((err) => {
         response.send(err);

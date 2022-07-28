@@ -11,11 +11,7 @@ router.get("/login", HomeController.loginForm);
 router.post("/login", HomeController.submitLoginUser);
 router.get("/", HomeController.homePage);
 router.use("/products", productRouter);
-
 router.use(isLoginMiddleWare);
-
-
 router.use("/profile", profileRouter);
 router.get("/logout", HomeController.getlogout);
-
 module.exports = router;
