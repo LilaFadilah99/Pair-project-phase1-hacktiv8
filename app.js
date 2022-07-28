@@ -18,6 +18,7 @@ app.use(
     },
   })
 );
+app.use(express.static("views"));
 app.use("/", router);
 app.locals.formatPriceToEjs = formatPrice;
 
