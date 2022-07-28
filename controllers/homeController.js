@@ -69,7 +69,7 @@ class HomeController {
       });
   }
 
-  static getlogout(request, response) {
+  static getlogout(request, response) { //hendel untuk bagian logout
     request.session.destroy((err) => {
       if (err) {
         response.send(err);

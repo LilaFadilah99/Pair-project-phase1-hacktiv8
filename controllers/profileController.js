@@ -14,7 +14,7 @@ class UserController {
         response.render("profile", { user, isLogin: request.session.userId && request.session.role === "admin" ? true : false });
         // response.send(res[0]);
       })
-      .then((err) => {
+      .catch((err) => {
         response.send(err);
       });
   }
@@ -28,7 +28,7 @@ class UserController {
         let user = res[0];
         response.render("addProfile", { user, isLogin: request.session.userId ? true : false });
       })
-      .then((err) => {
+      .catch((err) => {
         response.send(err);
       });
   }
@@ -40,20 +40,23 @@ class UserController {
       .then((res) => {
         response.redirect("/profile");
       })
-      .then((err) => {
+      .catch((err) => {
         response.send(err);
       });
   }
 
   static editProfile(request, response) {
     let id = request.params.id;
-    Account.findAll({ where: { id } })
+    // console.log(request.session.UserId);
+    Account.findAll({ where: { UserId : id } }) // ada bug disini dimana seharusnya yang benar itu UserId : id
       .then((res) => {
+        // console.log(res);
         let account = res[0];
         response.render("editProfile", { account, isLogin: request.session.userId ? true : false });
       })
       .catch((err) => {
         response.send(err);
+        console.log(err);
       });
   }
 
