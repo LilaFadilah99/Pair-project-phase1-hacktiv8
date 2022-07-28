@@ -11,7 +11,7 @@ class UserController {
     })
       .then((res) => {
         let user = res[0];
-        response.render("profile", { user, isLogin: request.session.userId && request.session.role === "admin" ? true : false });
+        response.render("profile", { user, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false  });
         // response.send(res[0]);
       })
       .catch((err) => {
@@ -26,7 +26,7 @@ class UserController {
     })
       .then((res) => {
         let user = res[0];
-        response.render("addProfile", { user, isLogin: request.session.userId ? true : false });
+        response.render("addProfile", { user, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false  });
       })
       .catch((err) => {
         response.send(err);
@@ -48,11 +48,11 @@ class UserController {
   static editProfile(request, response) {
     let id = request.params.id;
     // console.log(request.session.UserId);
-    Account.findAll({ where: { UserId : id } }) // ada bug disini dimana seharusnya yang benar itu UserId : id
+    Account.findAll({ where: { UserId: id } }) // ada bug disini dimana seharusnya yang benar itu UserId : id
       .then((res) => {
         // console.log(res);
         let account = res[0];
-        response.render("editProfile", { account, isLogin: request.session.userId ? true : false });
+        response.render("editProfile", { account, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false  });
       })
       .catch((err) => {
         response.send(err);

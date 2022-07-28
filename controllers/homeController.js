@@ -11,7 +11,7 @@ class HomeController {
         let products = res[0];
         let categories = res[1];
         // response.render("homePage", { products, categories, isLogin: request.session.userId ? true : false });
-        response.render("homePage", { products, categories, isLogin: request.session.userId ? true : false });
+        response.render("homePage", { products, categories, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
       })
       .catch((err) => {
         response.send(err);
@@ -19,7 +19,7 @@ class HomeController {
   }
 
   static registerForm(request, response) {
-    response.render("register", { isLogin: request.session.userId ? true : false });
+    response.render("register", { isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false});
   }
   static submitRegister(request, response) {
     let { username, email, password, role } = request.body;
@@ -33,7 +33,7 @@ class HomeController {
   }
   static loginForm(request, response) {
     const { error } = request.query;
-    response.render("loginForm", { error, isLogin: request.session.userId ? true : false });
+    response.render("loginForm", { error, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
   }
   static submitLoginUser(request, response) {
     const { username, password } = request.body;
@@ -59,7 +59,8 @@ class HomeController {
       });
   }
 
-  static getlogout(request, response) { //hendel untuk bagian logout
+  static getlogout(request, response) {
+    //hendel untuk bagian logout
     request.session.destroy((err) => {
       if (err) {
         response.send(err);

@@ -12,7 +12,7 @@ class ProductController {
       .then((res) => {
         let category = res[0];
         category = category.Category.name;
-        response.render("detailProduct", { products: res, category, isLogin: request.session.userId ? true : false });
+        response.render("detailProduct", { products: res, category, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
         // response.send(res);
       })
       .catch((err) => {
@@ -36,7 +36,7 @@ class ProductController {
       .then((res) => {
         let category = res[0];
         let account = res[1];
-        response.render("buyProducts", { account, category, isLogin: request.session.userId ? true : false });
+        response.render("buyProducts", { account, category, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
         // response.send(res);
       })
       .catch((err) => {
@@ -48,7 +48,7 @@ class ProductController {
   static addProducts(request, response) {
     Category.findAll({})
       .then((res) => {
-        response.render("addProducts", { categories: res, isLogin: request.session.userId ? true : false });
+        response.render("addProducts", { categories: res, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
       })
       .catch((err) => {
         response.send(err);
@@ -71,7 +71,7 @@ class ProductController {
       })
       .catch((err) => {
         if (err.name === "SequelizeValidationError") {
-          response.render("errors", { errors: err.errors, isLogin: request.session.userId ? true : false });
+          response.render("errors", { errors: err.errors, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
         } else {
           console.log(err);
           response.send(err);
@@ -88,7 +88,7 @@ class ProductController {
       .then((res) => {
         let category = res[0];
         category = category.Category.name;
-        response.render("productCategory", { products: res, category, isLogin: request.session.userId ? true : false });
+        response.render("productCategory", { products: res, category, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
       })
       .catch((err) => {
         response.send(err);
@@ -102,7 +102,7 @@ class ProductController {
       where: { id },
     })
       .then((res) => {
-        response.render("thankYouPage", { isLogin: request.session.userId ? true : false });
+        response.render("thankYouPage", { isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
       })
       .catch((err) => {
         response.send(err);
@@ -118,7 +118,7 @@ class ProductController {
       },
     })
       .then((res) => {
-        response.render("emptyListProduct", { products: res, isLogin: request.session.userId ? true : false });
+        response.render("emptyListProduct", { products: res, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
       })
       .catch((err) => {
         response.send(err);
@@ -131,7 +131,7 @@ class ProductController {
       where: { id },
     })
       .then((res) => {
-        response.render("restockProduct", { products: res, isLogin: request.session.userId ? true : false });
+        response.render("restockProduct", { products: res, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
       })
       .catch((err) => {
         response.send(err);
