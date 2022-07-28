@@ -40,7 +40,7 @@ class ProductController {
         // response.send(res);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         response.send(err);
       });
   }
@@ -92,7 +92,7 @@ class ProductController {
       })
       .catch((err) => {
         response.send(err);
-        console.log(err);
+        // console.log(err);
       });
   }
 
