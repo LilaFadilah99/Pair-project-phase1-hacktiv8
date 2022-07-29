@@ -6,6 +6,20 @@
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "wnrhtjmmspluab",
+    "password": "34641d208ab031510f5ce5cf7d5c06d3e91bbe4d79c3154282914a7b2fea9de9",
+    "database": "d8fladkrrb9gec",
+    "host": "ec2-100-26-39-41.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }
 
