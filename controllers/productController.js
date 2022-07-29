@@ -23,14 +23,14 @@ class ProductController {
   static buyProducts(request, response) {
     let id = request.params.id;
     // console.log(request.session.userId);
-    let UserId = request.session.userId
+    let UserId = request.session.userId;
     Promise.all([
       Product.findAll({
         include: [Category],
         where: { id },
       }),
       Account.findAll({
-        where: {UserId}, // ganti dibagian sini
+        where: { UserId }, // ganti dibagian sini
       }),
     ])
       .then((res) => {
@@ -83,7 +83,12 @@ class ProductController {
     let id = request.params.id;
     Product.findAll({
       include: [Category],
-      where: { CategoryId: id },
+      where: {
+        CategoryId: id,
+        stock: {
+          [Op.gt]: 0,
+        },
+      },
     })
       .then((res) => {
         let category = res[0];

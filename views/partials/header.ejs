@@ -3,41 +3,148 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Happy Shopping</title>
+    <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/95c0af5364.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 800;
+      }
+
+      h4 {
+        font-size: 1.1rem;
+        font-weight: 400;
+      }
+      /* Responsive */
+      @media (max-width: 767px) {
+        /* custom css */
+        h1 {
+          font-size: 30px;
+        }
+        h3 {
+          font-size: 22px;
+        }
+        p {
+          font-size: 13px;
+        }
+        a {
+          font-size: 13px;
+        }
+        button {
+          font-size: 13px;
+        }
+      }
+      /* ----------------Navbar--------------------- */
+      #navButton {
+        width: 100px;
+        height: 40px;
+        border: none;
+        margin: 10px;
+        border-radius: 30px;
+        background-color: #fdba12;
+        transition: 0.3s ease;
+        cursor: pointer;
+      }
+
+      #navButton:hover {
+        background-color: #f3950d;
+      }
+
+      #navbarNavAltMarkup a {
+        color: black;
+      }
+      #navbarNavAltMarkup a:hover {
+        color: #f3950d;
+      }
+      /* --------------------------card--------------- */
+      #cardPaket a {
+        background-color: #fdba12;
+      }
+
+      #cardPaket a:hover {
+        background-color: #f3950d;
+      }
+      .poductsCard {
+        border: none;
+        /* border-radius: 20px; */
+        transition: all 0.7s;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+      .card-body >p {
+        font-size: 12px;
+      }
+      .poductsCard:hover {
+        /* transform: scale(1.1); */
+        /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+      }
+      /* -----------------footer--------------- */
+      #footer {
+        color: #a5a9ad;
+      }
+      #footer h1 {
+        font-size: 20px;
+      }
+      #footer p {
+        font-size: 13px;
+      }
+    </style>
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
-            </li>
-            <% if (isAdmin === true) {%>
-            <li class="nav-item">
-              <a class="nav-link" href="/products/add">Add Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/products/emptyList">Empty List Products</a>
-            </li>
-            <% } %>
-            <% if (isLogin === false) {%>
-            <a href="/register"><button type="button" class="btn btn-info">Register</button></a>
-            <a href="/login"><button type="button" class="btn btn-info">Login</button></a>
+    <section id="navbar" style="background-color: #13d0dc">
+      <nav class="navbar navbar-expand-lg pt-3">
+        <div class="container">
+          <a class="navbar-brand" href="#"> <img src="../assets/logo2 (2).png" alt="" width="130px" class="d-inline-block align-text-top" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-5">
+              <a class="nav-link active text-white fw-bold" aria-current="page" href="/">Home</a>
+              <a class="nav-link mx-2 text-white fw-bold" href="#">Call Center</a>
+              <% if (isAdmin === true) {%>
+              <a class="nav-link mx-2 text-white fw-bold" href="/products/add">Add Products</a>
+              <a class="nav-link mx-2 text-white fw-bold" href="/products/emptyList">Empty Products</a>
+            </div>
+            <% } %> <% if (isLogin === false) {%>
+            <div class="navbar-nav ms-auto">
+              <a href="/login"><button type="button" class="btn btn-outline-light px-3 py-2">Login</button></a>
+            </div>
+            <div class="navbar-nav ms-3">
+              <a class="btn px-3 py-2" href="/register" role="button" style="background-color: #00ffc4">Sign Up</a>
+            </div>
             <% } else if(isLogin === true) { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/profile">Profile</a>
-              </li>
-            <a href="/logout"><button type="button" class="btn btn-info">Logout</button></a>
+              <a class="nav-link text-white fw-bold" href="/profile">Profile</a>
+            <a class="btn px-3 py-2 ms-auto" href="/logout" role="button" style="background-color: #00ffc4">Logout</a>
             <% } %>
-          </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-    <!-- End Navbar -->
+      </nav>
+    </section>
+    <!-- Akhir Navbar -->
+

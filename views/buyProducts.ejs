@@ -1,29 +1,44 @@
 <%- include('partials/header', {isLogin, isAdmin}) %>
-<div class="container my-5">
-  <div class="container-fluid">
-    <div class="row">
-      <% for (const key of category) {%>
-      <div class="col-2">
-        <img src="<%= key.image %>" width="80px" height="80px" alt="" />
-      </div>
-      <div class="col-3">
-        <p><%= key.name %></p>
-      </div>
-      <div class="col-3">
-        <p><%= key.Category.name %></p>
-      </div>
-      <div class="col-3">
-        <p><%= formatPriceToEjs(key.price) %></p>
+<section id="checkout" class="my-3">
+  <div class="container-fluid py-5">
+    <div class="container">
+      <h1 class="text-center">Checkout Your Products</h1>
+      <div class="row justify-content-between mt-md-5 pt-5">
+        <div class="col-md-6 col-sm-12 mb-4 mb-md-0">
+          <% for (key of category) {%>
+          <img src="<%= key.image %>" class="img-fluid" alt="#" />
+        </div>
+        <div class="col-md-6 col-sm-12 text-md-start">
+          <h5 class="fw-bold"><%= key.name %></h5>
+          <br />
+          <div class="row">
+            <div class="col-12">
+              <% for (const data of account) {%>
+              <br />
+              <p>Pesanan Akan dibeli pada <span class="fw-bold"><%= key.formatDate %>!</span></p>
+              <p>Barang akan dikirim menuju alamat anda di <span class="fw-bold"><%= data.addres %></span></p>
+              <p>Dengan penerima atas nama <span class="fw-bold"><%= data.name %></span></p>
+              <% } %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <p>Category:<span class="fw-bold"> <%= key.Category.name %></span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="container py-2" style="background-color: #efefef">
+                <span class="align-middle fw-bold"><%= formatPriceToEjs(key.price) %></span>
+              </div>
+              <br />
+              <a href="/products/<%= key.id %>/thank"><button type="button" class="btn btn-info">Checkout</button></a>
+              <% } %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <% for (const data of account) {%>
-    <p>Barang akan dikirim menuju alamat anda di <%= data.addres %></p>
-    <p>Dengan penerima atas nama <%= data.name %></p>
-    <% } %>
-    <p>Pesanan berhasil dibeli pada <%= key.formatDate %>  </p>
-    <br />
-    <a href="/products/<%= key.id %>/thank"><button type="button" class="btn btn-info">Checkout</button></a>
   </div>
-  <% } %>
-</div>
+</section>
 <%- include('partials/footer') %>

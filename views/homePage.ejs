@@ -1,40 +1,92 @@
 <%- include('partials/header', {isLogin, isAdmin}) %>
-<div class="container">
-  <div class="container-fluid">
-    <% for (const data of categories) {%>
-    <a class="btn btn-info" href="/products/<%= data.id %>/category" role="button"><%= data.name %></a>
-    <% } %>
-  </div>
-</div>
-<div class="container my-5">
-  <div class="container-fluid">
-    <!-- Search -->
-    <form class="d-flex" role="search" action="/" method="get">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name" />
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    <!-- End Search -->
-    <br /><br />
-    <br /><br />
-    <!-- Card -->
-    <div class="row">
-      <% for (const key of products) {%>
-      <div class="col">
-        <div class="card" style="width: 18rem">
-          <img src="<%= key.image %>" class="card-img-top" width="100px" height="150px" alt="..." />
-          <div class="card-body">
-            <p class="card-text fw-bold"><%= key.name %></p>
-            <div class="row">
-              <p class="card-text"><%= formatPriceToEjs(key.price) %></p>
-              <p class="card-text">Stock : <%= key.stock %></p>
-              <a href="/products/<%= key.id %>/detail">Show detail</a>
+<!-- Hero Section -->
+<section style="background-color: #13d0dc">
+  <div class="container py-5">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <br /><br />
+          <h1 style="color: white">
+            Beli Sekarang Dan Nikmati <br />
+            Kepuasan Transaksi <span style="color: #00ffc4">Bersama Kami!</span>
+          </h1>
+          <br />
+          <h5 class="text-white">Belanja sepuasnya tanpa ribet. Dapatkan produk andalan mu dari mana saja</h5>
+          <div class="row">
+            <div class="col-5">
+              <img src="./assets/gplay.png" alt="" class="img-fluid" />
+            </div>
+            <div class="col-4">
+              <br> <br><br>
+              <img src="./assets/app store.png" alt="" class="img-fluid" />
             </div>
           </div>
         </div>
+        <div class="col-6">
+          <img src="./assets/homePage.png" alt="home_page" class="img-fluid" />
+        </div>
       </div>
-      <% } %>
     </div>
-    <!-- End Card -->
   </div>
-</div>
+</section>
+<!-- End Hero Section -->
+<section id="allBody" style="background-color: #f4f7f9">
+  <!-- Category -->
+  <section class="category">
+    <div class="container py-5">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <h5 class="text-center pb-5">Pilih Produk Berdasarkan Category</h5>
+          <div class="col mx-auto">
+            <% for (const data of categories) {%>
+            <a class="btn px-5 py-3 rounded-pill btn-outline-secondary" href="/products/<%= data.id %>/category" role="button"><%= data.name %></a>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--End Category  -->
+  <!-- Search -->
+  <div class="container my-5">
+    <div class="container-fluid">
+      <div class="col-5">
+        <form class="d-flex" role="search" action="/" method="get">
+          <h6><i class="fa-solid fa-magnifying-glass pt-3 me-2"></i></h6>
+          <input class="form-control me-2 py-2" type="search" placeholder="Search" aria-label="Search" name="name" style="border-radius: 30px" />
+          <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Search -->
+  <!-- Products Card -->
+  <section id="productsCard">
+    <div class="container-fluid py-5">
+      <div class="container">
+        <div class="row">
+          <% for (const key of products) {%>
+          <!-- card 1 -->
+          <div class="mb-3 col-md-3 col-6">
+            <div class="card h-100 rounded-2 shadow-sm poductsCard">
+              <div class="col">
+                <div class="inner">
+                  <img src="<%= key.image %>" class="card-img-top img-fluid" alt="paket 1" style="width: auto; height: auto" />
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="card-title fw-bold" style="font-size: 12px"><%= key.name %></p>
+                <p class="card-text" style="font-size: 12px">Stock : <%= key.stock %></p>
+                <p class="card-text" style="font-size: 12px"><%= formatPriceToEjs(key.price) %></p>
+                <a href="/products/<%= key.id %>/detail" style="text-decoration: none; color: #1ac0e4; font-size: 14px">Show detail</a>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Products Card -->
+</section>
 <%- include('partials/footer') %>
