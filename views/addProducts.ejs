@@ -1,50 +1,66 @@
 <%- include('partials/header', {isLogin, isAdmin}) %>
 <div class="container my-5">
   <div class="container-fluid">
-    <div class="row justify-content-center">
-      <h1 class="text-center">Add New Products</h1>
-      <br /><br />
+    <h1 class="text-center">Add Your New Product</h1>
+    <br />
+    <h5 class="text-center">Find out how easy it is to shop</h5>
+    <br /><br />
+    <div class="row justify-content-center py-5">
+      <div class="col-6" style="background-color: white">
+        <div class="container">
+          <div class="container-fluid">
+            <!-- Form -->
+            <form action="/products/add" method="post">
+              <!-- input 1 -->
+              <div class="mb-3">
+                <label for="name" class="form-label fw-bold">Product Name</label>
+                <input type="text" class="form-control" id="name" name="name" />
+              </div>
+              <!-- input 2 -->
+              <div class="mb-3">
+                <label for="description" class="form-label fw-bold">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+              </div>
+              <!-- input 1 -->
+              <div class="mb-3">
+                <label for="image" class="form-label fw-bold">Image</label>
+                <input type="text" class="form-control" id="image" name="image" />
+              </div>
+              <!-- input 3 -->
+              <div class="mb-3">
+                <label for="price" class="form-label fw-bold">Price</label>
+                <input type="number" class="form-control" id="price" name="price" />
+              </div>
+              <!-- input 3 -->
+              <div class="mb-3">
+                <label for="stock" class="form-label fw-bold">Stock</label>
+                <input type="number" class="form-control" id="stock" name="stock" />
+              </div>
+              <!-- input 3 -->
+              <div class="mb-3">
+                <label for="CategoryId" class="form-label fw-bold">Categories</label>
+                <select class="form-select" aria-label="Default select example" id="CategoryId" name="CategoryId">
+                  <option selected>Select One</option>
+                  <% for (const key of categories) {%>
+                  <option value="<%= key.id %>"><%= key.name %></option>
+                  <% } %>
+                </select>
+              </div>
+              <a href=""><button type="submit" value="Save" class="btn" style="background-color: #13d0dc">Submit</button></a>
+            </form>
+            <!-- End Form -->
+          </div>
+        </div>
+      </div>
       <div class="col-6">
-        <!-- Form -->
-        <form action="/products/add" method="post">
-          <!-- input 1 -->
-          <div class="mb-3">
-            <label for="name" class="form-label">Product Name</label>
-            <input type="text" class="form-control" id="name" name="name" />
+        <div class="container">
+          <div class="container-fluid">
+            <img src="https://tendopay.ph/_nuxt/img/graphic-1.5b7d931.png" alt="" class="img-fluid" />
+            <h2>Buy Now, Pay Later</h2>
+            <br />
+            <p>HeroBuy lets you buy now and pay later at your favorite stores at a schedule that’s convenient for you. An easy and transparent way to shop, we’ll show you your repayment schedule before you complete any purchase.</p>
           </div>
-          <!-- input 2 -->
-          <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-          </div>
-          <!-- input 1 -->
-          <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
-            <input type="text" class="form-control" id="image" name="image" />
-          </div>
-          <!-- input 3 -->
-          <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price" name="price" />
-          </div>
-          <!-- input 3 -->
-          <div class="mb-3">
-            <label for="stock" class="form-label">Stock</label>
-            <input type="number" class="form-control" id="stock" name="stock" />
-          </div>
-          <!-- input 3 -->
-          <div class="mb-3">
-            <label for="CategoryId" class="form-label">Categories</label>
-            <select class="form-select" aria-label="Default select example" id="CategoryId" name="CategoryId">
-              <option selected>Select One</option>
-              <% for (const key of categories) {%>
-              <option value="<%= key.id %>"><%= key.name %></option>
-              <% } %>
-            </select>
-          </div>
-          <a href=""><button type="submit" value="Save" class="btn btn-info">Submit</button></a>
-        </form>
-        <!-- End Form -->
+        </div>
       </div>
     </div>
   </div>

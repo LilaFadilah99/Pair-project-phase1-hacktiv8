@@ -1,27 +1,75 @@
 <%- include('partials/header', {isLogin, isAdmin}) %>
-<div class="container my-5">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-4">
-        <% for (key of products) {%>
-        <img src="<%= key.image %>" alt="" class="img-fluid" />
-      </div>
-      <div class="col-10">
-        <h1><%= key.name %></h1>
-        <p><%= formatPriceToEjs(key.price) %></p>
-        <p>Stock: <%= key.stock %></p>
-        <a href="/products/<%= key.id %>/buy"><button type="button" class="btn btn-info">Buy</button></a>
-      </div>
-      <% } %>
-    </div>
-    <br /><br />
-    <div class="row">
-      <div class="col-10">
-        <p class="fw-bold">Deskripsi Product</p>
-        <p class="fw-bold">Category: <%= category %></p>
-        <p><%= key.description %></p>
+<section id="checkOut">
+  <div class="container-fluid py-5">
+    <div class="container">
+      <div class="row justify-content-between mt-md-5">
+        <div class="col-md-6 col-sm-12 mb-4 mb-md-0">
+          <% for (key of products) {%>
+          <img src="<%= key.image %>" class="img-fluid" alt="#" />
+        </div>
+        <div class="col-md-6 col-sm-12 text-md-start">
+          <h5 class="fw-bold"><%= key.name %></h5>
+          <br />
+          <div class="row">
+            <div class="col-12">
+              <p>
+                5.0
+                <span style="color: #fdba12">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </span>
+                <span style="font-size: 20px">|</span> 14,3RB Kunjungan<span style="font-size: 20px">|</span> 10RB+ Pesanan Selesai
+              </p>
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <p>Selesaikan pemesanan anda dengan mengisi form pembelian. Pastikan data yang anda isi benar. Selanjutnya Wersion akan memproses pesanan anda sesuai ketentuan yang dapat dibaca pada laman dibawah</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="container py-2" style="background-color: #efefef">
+                <span class="align-middle fw-bold"><%= formatPriceToEjs(key.price) %></span>
+              </div>
+              <br />
+              <a href="/products/<%= key.id %>/buy"><button type="button" class="btn btn-info">Buy Now</button></a>
+              <% } %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+<!-- Description -->
+<section id="infoTitle">
+  <div class="container-fluid pt-md-5 pt-3">
+    <div class="container py-md-4 py-3" style="background-color: #dddddd">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="ps-5">Description</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="infoDetail">
+  <div class="container-fluid py-3">
+    <div class="container py-md-5 py-3">
+      <div class="row">
+        <div class="col-10 mt-2">
+          <h3><span class="fw-bold">Category:</span> <%= category %></h3>
+          <br />
+          <h3>References</h3>
+          <p class=""><%= key.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <%- include('partials/footer') %>

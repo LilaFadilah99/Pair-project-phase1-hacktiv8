@@ -1,8 +1,8 @@
 <%- include('partials/header', {isLogin, isAdmin}) %>
-<div class="container">
+<div class="container my-5">
   <div class="container-fluid">
     <% errors.forEach((key)=>{ %>
-    <p><%= key.message %></p>
+    <p class="text-center"><%= key.message %></p>
     <% }) %>
   </div>
 </div>
