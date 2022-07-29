@@ -1,27 +1,38 @@
 <%- include('partials/header', {isLogin, isAdmin}) %>
-<div class="container my-5">
-  <div class="container-fluid">
-    <h1>Empty Products</h1>
-    <!-- Card -->
-    <div class="row">
-      <% for (const key of products) {%>
-      <div class="col">
-        <div class="card" style="width: 18rem">
-          <img src="<%= key.image %>" class="card-img-top" width="100px" height="150px" alt="..." />
-          <div class="card-body">
-            <p class="card-text fw-bold"><%= key.name %></p>
+<section id="allBody" style="background-color: #f4f7f9">
+  <div class="container py-5">
+    <div class="container-fluid">
+      <h1 class="text-center">Empty Products</h1>
+      <p class="text-center">Shop with over 400+ partner merchants online</p>
+      <!-- Products Card -->
+      <section id="productsCard">
+        <div class="container-fluid my-5">
+          <div class="container">
             <div class="row">
-              <p class="card-text"><%= formatPriceToEjs(key.price) %></p>
-              <p class="card-text">Stock : <%= key.stock %></p>
-              <a class="btn btn-primary" href="/products/<%= key.id %>/restock" role="button">Restock</a>
-              <a class="btn btn-primary" href="/products/<%= key.id %>/delete" role="button">Delete</a>
+              <% for (const key of products) {%>
+              <!-- card 1 -->
+              <div class="mb-3 col-md-3 col-6">
+                <div class="card h-100 rounded-2 shadow-sm poductsCard">
+                  <div class="col">
+                    <div class="inner">
+                      <img src="<%= key.image %>" class="card-img-top img-fluid" alt="paket 1" style="width: auto; height: auto" />
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-title fw-bold" style="font-size: 12px"><%= key.name %></p>
+                    <p class="card-text" style="font-size: 12px"><%= formatPriceToEjs(key.price) %></p>
+                    <a class="btn px-3 py-2 btn-sm" href="/products/<%= key.id %>/restock" role="button" style="background-color: #13d0dc">Restock</a>
+                    <a class="btn px-3 py-2 btn-sm" href="/products/<%= key.id %>/delete" role="button" style="background-color: #13d0dc">Delete</a>
+                  </div>
+                </div>
+              </div>
+              <% } %>
             </div>
           </div>
         </div>
-      </div>
-      <% } %>
+      </section>
+      <!-- Products Card -->
     </div>
-    <!-- End Card -->
   </div>
-</div>
+</section>
 <%- include('partials/footer') %>

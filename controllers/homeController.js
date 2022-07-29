@@ -10,7 +10,6 @@ class HomeController {
       .then((res) => {
         let products = res[0];
         let categories = res[1];
-        // response.render("homePage", { products, categories, isLogin: request.session.userId ? true : false });
         response.render("homePage", { products, categories, isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
       })
       .catch((err) => {
@@ -19,7 +18,7 @@ class HomeController {
   }
 
   static registerForm(request, response) {
-    response.render("register", { isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false});
+    response.render("register", { isLogin: request.session.userId ? true : false, isAdmin: request.session.userId && request.session.role === "admin" ? true : false });
   }
   static submitRegister(request, response) {
     let { username, email, password, role } = request.body;
@@ -65,7 +64,7 @@ class HomeController {
       if (err) {
         response.send(err);
       } else {
-        response.redirect("/login");
+        response.redirect("/");
       }
     });
   }

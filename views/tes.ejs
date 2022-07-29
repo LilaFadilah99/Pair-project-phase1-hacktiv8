@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/95c0af5364.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&display=swap");
 
@@ -77,12 +80,42 @@
       #navbarNavAltMarkup a:hover {
         color: #f3950d;
       }
+      /* --------------------------card--------------- */
+      #cardPaket a {
+        background-color: #fdba12;
+      }
+
+      #cardPaket a:hover {
+        background-color: #f3950d;
+      }
+      .poductsCard {
+        border: none;
+        /* border-radius: 20px; */
+        transition: all 0.7s;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+
+      .poductsCard:hover {
+        /* transform: scale(1.1); */
+        /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+      }
+      /* -----------------footer--------------- */
+      #footer {
+        color: #a5a9ad;
+      }
+      #footer h1 {
+        font-size: 20px;
+      }
+      #footer p {
+        font-size: 13px;
+      }
     </style>
   </head>
   <body>
     <!-- Navbar -->
-    <section id="navbar">
-      <nav class="navbar navbar-expand-lg">
+    <section id="navbar" style="background-color: #13d0dc">
+      <nav class="navbar navbar-expand-lg pt-3">
         <div class="container">
           <a class="navbar-brand" href="#"> <img src="/assets/d-studio.png" alt="" width="130px" class="d-inline-block align-text-top" /></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,22 +123,175 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-5">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link mx-2" href="#">Features</a>
-              <a class="nav-link mx-2" href="#">Pricing</a>
-              <a class="nav-link mx-2" href="#">Pricing</a>
+              <a class="nav-link active text-white fw-bold" aria-current="page" href="#">Home</a>
+              <a class="nav-link mx-2 text-white fw-bold" href="#">Add Products</a>
+              <a class="nav-link mx-2 text-white fw-bold" href="#">Empty Products</a>
+              <a class="nav-link mx-2 text-white fw-bold" href="#">Profile</a>
+              <a class="nav-link mx-2 text-white fw-bold" href="#">Call Center</a>
             </div>
             <div class="navbar-nav ms-auto">
-              <a href="#" class="nav-link">Register</a>
+              <a href=""><button type="button" class="btn btn-outline-light px-3 py-2">Login</button></a>
             </div>
-            <div class="navbar-nav">
-              <a href="#" class="nav-link"><button id="navButton">Login</button></a>
+            <div class="navbar-nav ms-3">
+              <a class="btn px-3 py-2" href="#" role="button" style="background-color: #00ffc4">Sign Up</a>
             </div>
           </div>
         </div>
       </nav>
     </section>
     <!-- Akhir Navbar -->
+    <!-- Hero Section -->
+    <section style="background-color: #13d0dc">
+      <div class="container py-5">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <br /><br />
+              <h1 style="color: white">
+                Beli Sekarang Dan Nikmati <br />
+                Kepuasan Transaksi <span style="color: #00ffc4">Bersama Kami!</span>
+              </h1>
+              <br />
+              <h5 class="text-white">Belanja sepuasnya tanpa ribet. Dapatkan produk andalan mu dari mana saja</h5>
+              <div class="row">
+                <div class="col-5">
+                  <img src="./assets/gplay.png" alt="" class="img-fluid" />
+                </div>
+                <div class="col-5">
+                  <img src="./assets/gplay.png" alt="" class="img-fluid" />
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <img src="./assets/homePage.png" alt="home_page" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Hero Section -->
+    <section id="allBody" style="background-color: #f4f7f9">
+      <!-- Category -->
+      <section class="category">
+        <div class="container py-5">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <h5 class="text-center pb-5">Pilih Produk Berdasarkan Category</h5>
+              <div class="col-2">
+                <a class="btn px-5 py-3 rounded-pill btn-outline-secondary" href="#" role="button">Fashion</a>
+              </div>
+              <div class="col-2">
+                <a class="btn px-5 py-3 rounded-pill btn-outline-secondary" href="#" role="button">Fashion</a>
+              </div>
+              <div class="col-2">
+                <a class="btn px-5 py-3 rounded-pill btn-outline-secondary" href="#" role="button">Fashion</a>
+              </div>
+              <div class="col-2">
+                <a class="btn px-5 py-3 rounded-pill btn-outline-secondary" href="#" role="button">Fashion</a>
+              </div>
+              <div class="col-2">
+                <a class="btn px-5 py-3 rounded-pill btn-outline-secondary" href="#" role="button">Fashion</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--End Category  -->
+      <!-- Search -->
+      <div class="container my-5">
+        <div class="container-fluid">
+          <div class="col-5">
+            <form class="d-flex" role="search" action="/" method="get">
+              <h6><i class="fa-solid fa-magnifying-glass pt-3 me-2"></i></h6>
+              <input class="form-control me-2 py-2" type="search" placeholder="Search" aria-label="Search" name="name" style="border-radius: 30px" />
+              <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- End Search -->
+      <!-- Products Card -->
+      <section id="productsCard">
+        <div class="container-fluid my-5">
+          <div class="container">
+            <div class="row justify-content-center">
+              <!-- card 1 -->
+              <div class="mb-3 col-md-3 col-6">
+                <div class="card h-100 rounded-2 shadow-sm poductsCard">
+                  <div class="inner">
+                    <img src="./assets/trusted.png" class="card-img-top" alt="paket 1" />
+                  </div>
+                  <div class="card-body">
+                    <p class="card-title fw-bold">{products.title}</p>
+                    <p class="card-text" style="font-size: 15px">Price</p>
+                    <p style="font-size: 12px"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Products Card -->
+    </section>
+    <!-- closing -->
+    <section style="background-color: #13d0dc; padding: 100px 0px">
+      <div class="container">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-8">
+              <h1>Start Shopping Now</h1>
+            </div>
+            <div class="col-2">
+              <a class="btn px-5 py-3" href="#" role="button" style="background-color: #00ffc4">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End closing -->
+    <!-- Footer -->
+    <section style="background-color: #1f2931" id="footer" class="py-5">
+      <div class="container">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-4">
+              <h1 class="text-white">TokoKu</h1>
+              <p style="font-size: 10px">
+                All loans under TendoPay are financed by Templetech Finance Corp (SEC Registration No. CS201820732, Certificate of Authority No. 1228). Please study the terms and conditions in the Disclosure Statement before proceeding with a loan transaction. <br /><br />
+                ©2021 TendoPay by Templetech Finance Corp. an SEC Licensed Financing Company
+              </p>
+            </div>
+            <div class="col-2">
+              <p>PRODUCT <br /></p>
+              <p>How It Works</p>
+              <p>Where to Shop</p>
+              <p>Repayments</p>
+            </div>
+            <div class="col-2">
+              <p>PRODUCT <br /></p>
+              <p>How It Works</p>
+              <p>Where to Shop</p>
+              <p>Repayments</p>
+            </div>
+            <div class="col-2">
+              <p>PRODUCT <br /></p>
+              <p>How It Works</p>
+              <p>Where to Shop</p>
+              <p>Repayments</p>
+            </div>
+            <div class="col-2">
+              <p>PRODUCT <br /></p>
+              <p>How It Works</p>
+              <p>Where to Shop</p>
+              <p>Repayments</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Footer -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -1,24 +1,53 @@
-<%- include('partials/header', {isLogin, isAdmin}) %>
-<div class="container my-5">
+<%- include('partials/header', {isLogin, isAdmin}) %> <% if (user.Account === null) {%>
+<div class="container my-5 py-5">
   <div class="container-fluid">
     <h1 class="text-center">Lengkapi Profil Anda</h1>
-    <% if (user.Account === null) {%>
-    <a class="btn btn-primary" href="/profile/<%= user.id %>/add" role="button">Add Profile</a>
+    <a class="btn btn-info px-3 py-2" href="/profile/<%= user.id %>/add" role="button">Add Profile</a>
     <div class="row justify-content-center">
       <div class="col-6">
         <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?w=740&t=st=1658928222~exp=1658928822~hmac=faf4176e667aaa9b9325a69fbac4a85067e348af46b2358c9de3e3de04b3886e" alt="" class="img-fluid" />
       </div>
     </div>
-    <% }else {%>
-    <p>Name : <%= user.Account.name %></p>
-    <p>Gender : <%= user.Account.gender %></p>
-    <p>Address : <%= user.Account.addres %></p>
-    <img src="./assets/trusted.png" alt="" />
-
-    <br /><br />
-    <a class="btn btn-primary" href="/profile/<%= user.id %>/edit" role="button">Edit Profile</a>
-    <% } %>
+  </div>
+</div>
+<% }else {%>
+<div class="container-fluid" style="background-color: #13d0dc">
+  <div class="row justify-content-center py-5">
+    <div class="col-6">
+      <div class="container">
+        <div class="container-fluid">
+          <p class="text-white" style="font-size: 50px">Here Is Your Personal Space. Enjoy With HeroBuy!</p>
+          <br />
+          <img src="https://app.tendopay.ph/dist/img/login_background/tendopay_login.png" alt="" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+    <div class="col-4" style="background-color: white">
+      <div class="container">
+        <div class="container-fluid">
+          <br /><br />
+          <h2>Your Profile</h2>
+          <br /><br />
+          <% if (user.Account === null) {%>
+          <a class="btn btn-info px-3 py-2" href="/profile/<%= user.id %>/add" role="button">Add Profile</a>
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?w=740&t=st=1658928222~exp=1658928822~hmac=faf4176e667aaa9b9325a69fbac4a85067e348af46b2358c9de3e3de04b3886e" alt="" class="img-fluid" />
+            </div>
+          </div>
+          <% }else {%>
+          <p><span class="fw-bold">Name : </span><%= user.Account.name %></p>
+          <p><span class="fw-bold">Gender : </span> <%= user.Account.gender %></p>
+          <p><span class="fw-bold">Address : </span> <%= user.Account.addres %></p>
+          <br /><br />
+          <h3>Hello To HeroBuy!</h3>
+          <br />
+          <a class="btn btn-info" href="/profile/<%= user.id %>/edit" role="button">Edit Profile</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<%- include('partials/footer') %>
+<% } %> <%- include('partials/footer') %>

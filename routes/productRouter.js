@@ -1,13 +1,12 @@
 const router = require("express").Router();
 const ProductController = require("../controllers/productController");
-const isLoginMiddleWare = require('../middleware/loginMiddleware')
-const isAdminMiddleware = require('../middleware/isAdminMiddleware')
-
+const isLoginMiddleWare = require("../middleware/loginMiddleware");
+const isAdminMiddleware = require("../middleware/isAdminMiddleware");
 
 router.get("/:id/detail", ProductController.detailProduct);
+router.get("/:id/category", ProductController.productCategory);
 router.use(isLoginMiddleWare);
 router.get("/:id/thank", ProductController.thankYouPage);
-router.get("/:id/category", ProductController.productCategory);
 router.get("/:id/buy", ProductController.buyProducts);
 router.use(isAdminMiddleware);
 router.get("/add", ProductController.addProducts);
